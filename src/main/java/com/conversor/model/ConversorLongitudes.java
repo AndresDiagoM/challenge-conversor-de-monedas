@@ -7,14 +7,14 @@ public class ConversorLongitudes {
     //---------- Atributos ----------
     private Double metros;
     private Double centimetros;
-    private static Scanner entrada; // static para que sea compartido por todas las instancias de la clase
+    private static Scanner entrada = new Scanner(System.in);
+    // static para que sea compartido por todas las instancias de la clase
     private static Integer opcion;
 
     //---------- Construtores ----------
     public ConversorLongitudes(Double metros) {
         this.metros = metros;
         this.centimetros = metros * 100;
-        this.entrada = new Scanner(System.in);
     }
     public ConversorLongitudes() {
         this(Double.valueOf(0));
@@ -79,6 +79,20 @@ public class ConversorLongitudes {
         double metros = centimetros / 100;
         System.out.println("El valor en metros es: " + metros + " m");
     }
+    public static String convertir(Integer opcion, Double valor){
+        switch (opcion) {
+            case 1:
+                return ""+valor*100+" cm";
+            case 2:
+                return ""+valor/100+" m";
+            case 3:
+                break;
+            default:
+                // Aquí puedes manejar cualquier otro valor inesperado si lo deseas
+                break;
+        }
+        return null;
+    }
 
     //---------- Getters and Setters ----------
     public double getMetros() {
@@ -101,5 +115,9 @@ public class ConversorLongitudes {
 
     public static Integer getOpcion() {
         return opcion;
+    }
+    
+    public static String[] getOpciones(){
+        return new String[] { "Seleccione una opcion", "Converter metros para centímetros", "Converter centímetros para metros"};
     }
 }
