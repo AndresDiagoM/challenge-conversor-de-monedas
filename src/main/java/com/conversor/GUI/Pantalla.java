@@ -5,6 +5,8 @@
 package com.conversor.GUI;
 
 import com.conversor.model.*;
+import com.conversor.utils.Utilities;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -42,10 +44,8 @@ public class Pantalla extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lbl_title = new javax.swing.JLabel();
         lbl_conversor = new javax.swing.JLabel();
-        cb_conversores = new javax.swing.JComboBox<>();
         pnl_ingresar_valor = new javax.swing.JPanel();
         lbl_opciones = new javax.swing.JLabel();
-        cb_opciones = new javax.swing.JComboBox<>();
         lbl_valor = new javax.swing.JLabel();
         btn_convertir = new javax.swing.JButton();
         lbl_valor1 = new javax.swing.JLabel();
@@ -53,9 +53,12 @@ public class Pantalla extends javax.swing.JFrame {
         txt_valor = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         txt_resultado = new javax.swing.JTextPane();
+        cb_opciones = new javax.swing.JComboBox<>();
+        cb_conversores = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversor One");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_title.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -65,32 +68,24 @@ public class Pantalla extends javax.swing.JFrame {
         lbl_conversor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_conversor.setText("Seleccione un conversor:");
 
-        cb_conversores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un conversor", "Longitud", "Monedas", "Temperatura", "Idioma" }));
-        cb_conversores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_conversoresActionPerformed(evt);
-            }
-        });
-
         lbl_opciones.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lbl_opciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_opciones.setText("Seleccione un conversor:");
-
-        cb_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un conversor", " " }));
-        cb_opciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_opcionesActionPerformed(evt);
-            }
-        });
+        lbl_opciones.setText("Seleccione una opcion:");
 
         lbl_valor.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lbl_valor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_valor.setText("Ingrese valor");
 
+        btn_convertir.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         btn_convertir.setText("Convertir");
         btn_convertir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_convertirActionPerformed(evt);
+            }
+        });
+        btn_convertir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btn_convertirKeyReleased(evt);
             }
         });
 
@@ -102,109 +97,120 @@ public class Pantalla extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_valorKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_valorKeyReleased(evt);
+            }
         });
         jScrollPane3.setViewportView(txt_valor);
 
         jScrollPane4.setViewportView(txt_resultado);
 
+        cb_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion", "" }));
+        cb_opciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_opcionesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnl_ingresar_valorLayout = new javax.swing.GroupLayout(pnl_ingresar_valor);
         pnl_ingresar_valor.setLayout(pnl_ingresar_valorLayout);
         pnl_ingresar_valorLayout.setHorizontalGroup(
             pnl_ingresar_valorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_ingresar_valorLayout.createSequentialGroup()
+                .addContainerGap(124, Short.MAX_VALUE)
+                .addComponent(lbl_opciones, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cb_opciones, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(127, 127, 127))
             .addGroup(pnl_ingresar_valorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_ingresar_valorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnl_ingresar_valorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_ingresar_valorLayout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_convertir)
-                            .addGap(241, 241, 241))
-                        .addGroup(pnl_ingresar_valorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnl_ingresar_valorLayout.createSequentialGroup()
-                                .addGap(100, 100, 100)
-                                .addComponent(lbl_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnl_ingresar_valorLayout.createSequentialGroup()
-                                .addComponent(lbl_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14))))
+                .addGroup(pnl_ingresar_valorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_ingresar_valorLayout.createSequentialGroup()
-                        .addComponent(lbl_opciones, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(cb_opciones, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(121, Short.MAX_VALUE))
+                        .addGap(224, 224, 224)
+                        .addComponent(lbl_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnl_ingresar_valorLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(lbl_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnl_ingresar_valorLayout.createSequentialGroup()
+                        .addGap(353, 353, 353)
+                        .addComponent(btn_convertir)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_ingresar_valorLayout.setVerticalGroup(
             pnl_ingresar_valorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_ingresar_valorLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(45, 45, 45)
                 .addGroup(pnl_ingresar_valorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_opciones)
                     .addComponent(cb_opciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
+                .addGap(36, 36, 36)
                 .addGroup(pnl_ingresar_valorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_valor, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(lbl_valor)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(btn_convertir)
+                .addGap(31, 31, 31)
                 .addGroup(pnl_ingresar_valorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_valor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(156, 156, 156))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_ingresar_valorLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_ingresar_valorLayout.createSequentialGroup()
+                        .addComponent(lbl_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))))
         );
+
+        cb_conversores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un conversor", "Longitud", "Monedas", "Temperatura", "Idioma" }));
+        cb_conversores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_conversoresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(lbl_conversor, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(cb_conversores, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnl_ingresar_valor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(194, 194, 194))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnl_ingresar_valor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(216, 216, 216)
+                                .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(141, 141, 141)
+                                .addComponent(lbl_conversor, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_conversores, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_conversores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_conversor, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_ingresar_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(248, 248, 248))
+                .addGap(66, 66, 66)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_conversor)
+                    .addComponent(cb_conversores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(pnl_ingresar_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_convertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_convertirActionPerformed
-        // convertir 
-        this.valor = Double.valueOf(txt_valor.getText());
-        this.resultado = ConversorLongitudes.convertir(opcion, valor);
         
         //mostrar resultado
         txt_resultado.setText(this.resultado);
@@ -213,8 +219,7 @@ public class Pantalla extends javax.swing.JFrame {
     private void cb_conversoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_conversoresActionPerformed
         //Cuando se seleccione el conversor de longitud se debe mostrar el siguiente mensaje:
         String selected = cb_conversores.getSelectedItem().toString();
-        if (selected.equals("Longitud")) {
-                        
+        if (selected.equals("Longitud")) {                        
             //obtener opciones del conversor
             String[] opciones = ConversorLongitudes.getOpciones();
             cb_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(opciones));
@@ -229,12 +234,47 @@ public class Pantalla extends javax.swing.JFrame {
         Integer op = cb_opciones.getSelectedIndex();
         //System.out.println("opciones"+op);
         this.opcion = op;
+        
+        if(op==1){
+            lbl_valor.setText("Ingrese el valor metros:");
+        }else{
+            lbl_valor.setText("Ingrese el valor en centímetros:");
+        }
     }//GEN-LAST:event_cb_opcionesActionPerformed
 
     private void txt_valorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_valorKeyPressed
-        // TODO add your handling code here:
-        btn_convertir.setEnabled(true);
+
     }//GEN-LAST:event_txt_valorKeyPressed
+
+    private void btn_convertirKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_convertirKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_convertirKeyReleased
+
+    private void txt_valorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_valorKeyReleased
+        String txt = txt_valor.getText();
+        //System.out.println("valor: "+Utilities.esNumero(txt)+" ->"+txt);
+        
+        if(txt!=null && txt!=""){
+            if (Utilities.esNumero(txt)) {
+                this.valor = Double.valueOf(txt_valor.getText());
+                if(valor<0.0){
+                    showMessageDialog(null, "El valor debe ser positivo");
+                }else{
+
+                    //si opcion esta vacio, mostrar mensaje
+                    if(opcion==null){
+                        showMessageDialog(null, "Sellecione una opcion");
+                    }
+
+                    this.resultado = ConversorLongitudes.convertir(opcion, valor);
+                    btn_convertir.setEnabled(true);
+                }
+
+            } else {
+                showMessageDialog(null, "El texto no es un número.");
+            }
+        }
+    }//GEN-LAST:event_txt_valorKeyReleased
 
     /**
      * @param args the command line arguments
