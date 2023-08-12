@@ -6,7 +6,12 @@ package com.conversor.GUI;
 
 import com.conversor.model.*;
 import com.conversor.utils.Utilities;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,11 +22,13 @@ public class Pantalla extends javax.swing.JFrame {
     Double valor;
     Integer opcion;
     String resultado;
+    FondoPanel fondo = new FondoPanel();
 
     /**
      * Creates new form Pantalla
      */
     public Pantalla() {
+        this.setContentPane(fondo);
         initComponents();
         pnl_ingresar_valor.setVisible(false);
 
@@ -58,21 +65,33 @@ public class Pantalla extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversor One");
+        setBackground(new java.awt.Color(255, 255, 153));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lbl_title.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        lbl_title.setForeground(new java.awt.Color(255, 255, 255));
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_title.setText("CONVERSOR ONE");
+        jPanel1.add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 6, 416, -1));
 
         lbl_conversor.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        lbl_conversor.setForeground(new java.awt.Color(255, 255, 255));
         lbl_conversor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_conversor.setText("Seleccione un conversor:");
+        jPanel1.add(lbl_conversor, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 122, 292, -1));
+
+        pnl_ingresar_valor.setOpaque(false);
 
         lbl_opciones.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        lbl_opciones.setForeground(new java.awt.Color(255, 255, 255));
         lbl_opciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_opciones.setText("Seleccione una opcion:");
 
         lbl_valor.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        lbl_valor.setForeground(new java.awt.Color(255, 255, 255));
         lbl_valor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_valor.setText("Ingrese valor");
 
@@ -90,6 +109,7 @@ public class Pantalla extends javax.swing.JFrame {
         });
 
         lbl_valor1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        lbl_valor1.setForeground(new java.awt.Color(255, 255, 255));
         lbl_valor1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_valor1.setText("Resultado:");
 
@@ -162,50 +182,17 @@ public class Pantalla extends javax.swing.JFrame {
                         .addGap(26, 26, 26))))
         );
 
+        jPanel1.add(pnl_ingresar_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 185, -1, -1));
+
         cb_conversores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un conversor", "Longitud", "Monedas", "Temperatura", "Idioma" }));
         cb_conversores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_conversoresActionPerformed(evt);
             }
         });
+        jPanel1.add(cb_conversores, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 124, 283, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pnl_ingresar_valor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(216, 216, 216)
-                                .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addComponent(lbl_conversor, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cb_conversores, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_title)
-                .addGap(66, 66, 66)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_conversor)
-                    .addComponent(cb_conversores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(pnl_ingresar_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 560));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -327,4 +314,25 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JTextPane txt_resultado;
     private javax.swing.JTextPane txt_valor;
     // End of variables declaration//GEN-END:variables
+
+    class FondoPanel extends JPanel 
+    {
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/com/conversor/sources/background.jpg")).getImage();
+            
+            
+//            URL imageUrl = getClass().getResource("/com/conversor/sources/background.jpg");
+//            System.out.println("imageURL:"+imageUrl);
+
+            
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            
+            setOpaque(false);
+            
+            super.paint(g);
+        }
+    }
 }
