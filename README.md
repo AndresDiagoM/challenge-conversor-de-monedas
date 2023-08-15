@@ -15,7 +15,7 @@ Challenge ONE Back End - Java. Crea tu propio conversor de moneda
   <h3 align="center">Converor de Monedas</h3>
 
   <p align="center">
-    Porjecto con Java
+    Java Project
     <br />
     <a href=""><strong>Explore the docs »</strong></a>
     <br />
@@ -87,21 +87,10 @@ Java Swing is used for the user interface.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The project has to be compiled with java, and it doesn't have a development server.
 
-## Online Deploy on GitHub Pages
-
-Using this command: `ng build --output-path docs --base-href /challenge-conversor-de-monedas/`, you can deploy the project on GitHub Pages. You can visit the online version of this project on [GitHub Pages](https://andresdiagom.github.io/challenge-conversor-de-monedas/).
-
-
-
-## Online Deploy on Firebase
-
-Hosting URL: 
 
 ### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * [![Java][Java]][Java-url]
 * [![Maven][Maven]][Maven-url]
@@ -113,26 +102,28 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To use MyStore, follow these steps:
+To use this project, follow these steps:
 
 1. Clone this repository
 2. Install the dependencies
 3. Run the application
-4. Navigate to `http://localhost:4200/`
+4. Navigate the interface
 5. Enjoy!
 
 ### Prerequisites
 
-To use this project, you need to have `node` and `npm` installed on your machine. To install them, follow these steps:
+To use this project, you need to have installed a Java JDK and Maven.
 
-1. Download the [Node.js installer](https://nodejs.org/en/download/).
-2. Run the installer (the `.msi` file you downloaded in the previous step.)
-3. Follow the prompts in the installer (Accept the license agreement, click the NEXT button a bunch of times and accept the default installation settings).
-4. Restart your computer. You won’t be able to run Node.js until you restart your computer.
-5. Test Node. To see if Node is installed, open the Windows Command Prompt, Powershell or a similar command line tool, and type `node -v`. This should print a version number, so you’ll see something like this `v0.10.35`.
-6. Test NPM. To see if NPM is installed, type `npm -v` in Terminal. This should print NPM’s version number so you’ll see something like this `1.4.28`.
-7. If you need to update `npm`, you can make it using `npm install npm -g`. You can also update Node using `npm install node -g`. This will also update `npm` to the latest version.
-
+1. Download the Java JDK from [here](https://www.oracle.com/java/technologies/javase-downloads.html)
+2. Download Maven from [here](https://maven.apache.org/download.cgi)
+3. Install the Java JDK and Maven
+4. Verify the installation
+   ```sh
+   java -version
+   ```
+   ```sh
+   mvn -version
+   ```
 
 ### Installation
 
@@ -142,15 +133,11 @@ _Follow the steps:._
    ```sh
    git clone https://github.com/AndresDiagoM/challenge-conversor-de-monedas
    ```
-2. Install NPM packages
+2. Run the application
    ```sh
-   npm install
+   java -jar target/challenge-conversor-de-monedas-1.0-SNAPSHOT.jar
    ```
-3. Run the application
-   ```sh
-    ng serve
-    ```
-4. Navigate to `http://localhost:4200/`
+3. Navigate the interface
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -160,7 +147,10 @@ _Follow the steps:._
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. Navigate to `http://localhost:4200/`
+You can watch this gif to see how the application works.
+
+
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -197,7 +187,7 @@ React is [MIT licensed](./LICENSE).
 <!-- CONTACT -->
 ## Contact
 
-Andres Felipe Diago - [@your_twitter](https://twitter.com/your_username) - email@example.com
+<!-- Andres Felipe Diago - [@your_twitter](https://twitter.com/your_username) - email@example.com -->
 
 Project Link: [https://github.com/AndresDiagoM/challenge-conversor-de-monedas](https://github.com/AndresDiagoM/challenge-conversor-de-monedas)
 
@@ -221,7 +211,7 @@ Project Link: [https://github.com/AndresDiagoM/challenge-conversor-de-monedas](h
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/andres-felipe-diago-matta/
-[product-screenshot]: src/assets/images/screenshot.png
+[product-screenshot]: src/main/java/com/conversor/sources/Screenshot.png
 
 
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
