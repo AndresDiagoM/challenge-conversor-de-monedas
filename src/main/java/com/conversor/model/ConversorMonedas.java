@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.conversor.model;
 
 /**
- *
+ * Clase que representa un conversor de monedas
  * @author felip
  */
 public class ConversorMonedas {
@@ -34,6 +30,12 @@ public class ConversorMonedas {
     }
 
     //---------- Métodos ----------
+    /**
+     * Método que convierte una moneda a otra
+     * @param var1 Moneda de origen -> USD, EUR, JPY, GBP, KRW, COP
+     * @param var2 Moneda de destino
+     * @param value1 Valor a convertir
+     */
     public static String convertir(String var1, String var2, Double value1){
         double USD_TO_COP = 3700.0;
         double USD_TO_EUR = 0.85;
@@ -97,6 +99,10 @@ public class ConversorMonedas {
     public static Integer getOpcion() {
         return opcion;
     }
+    /**
+     * Metodo que entrega las opciones del menu
+     * @return
+     */
     public static String[] getOpciones(){
         return new String[] { "Seleccione una opcion", "COP", "USD", "EUR", "JPY", "GBP", "KRW"};
     }

@@ -1,17 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.conversor.utils;
 
 /**
- *
+ * Clase con métodos de utilidad para el programa
  * @author felip
  */
 public class Utilities {
     
     
     // ----------------- METODOS --------------------
+    /**
+     * Método que verifica si un texto es un número
+     * @param txt
+     * @return
+     */
     public static boolean esNumero(String txt) {
         try {
             Float.valueOf(txt);  // Intentar convertir el texto a un número decimal

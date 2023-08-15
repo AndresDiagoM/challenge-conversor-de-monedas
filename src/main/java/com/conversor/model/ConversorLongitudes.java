@@ -1,7 +1,11 @@
 package com.conversor.model;
 
 import java.util.Scanner;
-
+/**
+ * Clase que representa un conversor de longitudes
+ * @author felip
+ * @version 1.0
+ */
 public class ConversorLongitudes {
     
     //---------- Atributos ----------
@@ -79,6 +83,13 @@ public class ConversorLongitudes {
         double metros = centimetros / 100;
         System.out.println("El valor en metros es: " + metros + " m");
     }
+    /**
+     * Método que convierte una longitud de una unidad a otra
+     * @param var1 // unidad de origen
+     * @param var2 // unidad de destino
+     * @param valor // valor a convertir
+     * @return
+     */
     public static String convertir(String var1, String var2, Double valor){
         // Convertir a metros
         Double inMeters=0.0;

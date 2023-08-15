@@ -3,8 +3,10 @@ package com.conversor;
 import com.conversor.GUI.*;
 
 /**
- *
- * @author felip
+ * Clase principal del programa, se encarga de ejecutar la primera pantalla del programa.
+ * @author Andres Diago
+ * @version 1.0
+ * 
  */
 public class AppRunner {
     public static void main(String[] args) {
