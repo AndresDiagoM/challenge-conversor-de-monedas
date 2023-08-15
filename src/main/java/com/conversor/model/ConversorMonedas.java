@@ -34,19 +34,63 @@ public class ConversorMonedas {
     }
 
     //---------- Métodos ----------
-    public static String convertir(Integer opcion, Double valor){
-        switch (opcion) {
-            case 1:
-                return ""+valor*100+" cm";
-            case 2:
-                return ""+valor/100+" m";
-            case 3:
+    public static String convertir(String var1, String var2, Double value1){
+        double USD_TO_COP = 3700.0;
+        double USD_TO_EUR = 0.85;
+        double USD_TO_JPY = 110.0;
+        double USD_TO_GBP = 0.75;
+        double USD_TO_KRW = 1100.0;
+
+        // Convertir a USD
+        double inUSD = 0.0;
+        switch (var1) {
+            case "COP":
+                inUSD = value1 / USD_TO_COP;
                 break;
-            default:
-                // Aquí puedes manejar cualquier otro valor inesperado si lo deseas
+            case "EUR":
+                inUSD = value1 / USD_TO_EUR;
+                break;
+            case "JPY":
+                inUSD = value1 / USD_TO_JPY;
+                break;
+            case "GBP":
+                inUSD = value1 / USD_TO_GBP;
+                break;
+            case "KRW":
+                inUSD = value1 / USD_TO_KRW;
+                break;
+            case "USD":
+                inUSD = value1;
                 break;
         }
-        return null;
+
+        // Convertir a la moneda deseada
+        double result = 0.0;
+        switch (var2) {
+            case "COP":
+                result = inUSD * USD_TO_COP;
+                break;
+            case "EUR":
+                result = inUSD * USD_TO_EUR;
+                break;
+            case "JPY":
+                result = inUSD * USD_TO_JPY;
+                break;
+            case "GBP":
+                result = inUSD * USD_TO_GBP;
+                break;
+            case "KRW":
+                result = inUSD * USD_TO_KRW;
+                break;
+            case "USD":
+                result = inUSD;
+                break;
+        }
+        
+        // redondear a 2 decimales
+        result = Math.round(result * 100.0) / 100.0;
+        
+        return String.valueOf(result);
     }
 
     //---------- Getters & Setters ----------

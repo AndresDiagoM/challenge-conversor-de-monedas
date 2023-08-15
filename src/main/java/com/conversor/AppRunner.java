@@ -8,7 +8,7 @@ import com.conversor.GUI.*;
  */
 public class AppRunner {
     public static void main(String[] args) {
-        Pantalla pantalla = new Pantalla();
+        Pantalla1 pantalla = new Pantalla1();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null); // Centrar la pantalla
     }

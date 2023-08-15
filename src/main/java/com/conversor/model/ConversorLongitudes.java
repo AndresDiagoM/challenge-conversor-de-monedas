@@ -79,22 +79,56 @@ public class ConversorLongitudes {
         double metros = centimetros / 100;
         System.out.println("El valor en metros es: " + metros + " m");
     }
-    public static String convertir(Integer opcion, Double valor){
-        switch (opcion) {
-            case 1:
-                return ""+valor*100+" cm";
-            case 2:
-                return ""+valor/100+" m";
-            case 3:
+    public static String convertir(String var1, String var2, Double valor){
+        // Convertir a metros
+        Double inMeters=0.0;
+        switch (var1) {
+            case "kilometros":
+                inMeters = valor * 1000;
+                break;
+            case "metros":
+                inMeters = valor;
+                break;
+            case "centimetros":
+                inMeters = valor / 100;
                 break;
             default:
                 // Aquí puedes manejar cualquier otro valor inesperado si lo deseas
                 break;
         }
-        return null;
+        
+        // Convertir a la unidad deseada
+        Double result = 0.0;
+        switch (var2) {
+            case "kilometros":
+                result = inMeters / 1000;
+                break;
+            case "metros":
+                result = inMeters;
+                break;
+            case "centimetros":
+                result = inMeters * 100;
+                break;
+            default:
+                // Aquí puedes manejar cualquier otro valor inesperado si lo deseas
+                break;
+        }
+
+        // redondear a 2 decimales
+        result = Math.round(result * 100.0) / 100.0;
+
+        return result.toString();
     }
 
     //---------- Getters and Setters ----------
+    public static Integer getOpcion() {
+        return opcion;
+    }
+    
+    public static String[] getOpciones(){
+        return new String[] { "Seleccione una opcion", "kilometros", "metros", "centimetros"};
+    }
+    
     public double getMetros() {
         return metros;
     }
@@ -113,11 +147,4 @@ public class ConversorLongitudes {
         this.metros = centimetros / 100;
     }
 
-    public static Integer getOpcion() {
-        return opcion;
-    }
-    
-    public static String[] getOpciones(){
-        return new String[] { "Seleccione una opcion", "Converter metros para centímetros", "Converter centímetros para metros"};
-    }
 }
