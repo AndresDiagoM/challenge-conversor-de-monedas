@@ -151,6 +151,7 @@ You can watch this gif to see how the application works.
 
 
 
+![pantalla](https://github.com/AndresDiagoM/challenge-conversor-de-monedas/assets/82129635/7fbe8738-0978-4f93-952b-8066994b8c70)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
